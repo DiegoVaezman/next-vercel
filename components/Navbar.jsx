@@ -1,12 +1,31 @@
-import Link from 'next/link';
-import styles from './Navbar.module.css';
+import styles from "./Navbar.module.css";
+import { ActiveLink } from "./ActiveLink";
+
+const menuItems = [
+  {
+    text: "Home",
+    href: "/",
+  },
+  {
+    text: "About",
+    href: "/about",
+  },
+  {
+    text: "Contact",
+    href: "/contact",
+  },
+  {
+    text: "Pricing",
+    href: "/pricing",
+  },
+];
 
 export const Navbar = () => {
-    return (
-        <nav className={styles['menu-container']}>
-            <Link href='/'>Home</Link>
-            <Link href='/about'>About</Link>
-            <Link href='/contact'>Contact</Link>
-        </nav>
-    );
+  return (
+    <nav className={styles["menu-container"]}>
+      {menuItems.map((i) => (
+        <ActiveLink text={i.text} href={i.href} />
+      ))}
+    </nav>
+  );
 };
